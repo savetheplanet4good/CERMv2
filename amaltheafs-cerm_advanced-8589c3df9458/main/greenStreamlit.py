@@ -344,7 +344,7 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro_correl
         plt.xticks(fontsize=20)
         plt.yticks(fontsize=20)
         plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(xmax=1))
-        st.pyplot(fig1, style={'margin-left': '25%'})
+        st.pyplot(fig1)
         st.write('Comparing Physical and Economic Risks Without Transition')
         st.markdown("""
                     <p style= font-size:15px;color:#898A8B;text-align: left;'>
@@ -448,7 +448,7 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro_correl
         plt.legend()
         plt.xticks(fontsize=20)
         plt.yticks(fontsize=20)
-        st.pyplot(fig2, style={'margin-left': '25%'})
+        st.pyplot(fig2)
         st.write("Amortizing Physical Risk Auto-Correlation Time")
         st.markdown("""
                             <p style= font-size:15px;color:#898A8B;text-align: left;'>
@@ -712,7 +712,7 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro_correl
     plt.show()
     #Graph 4
     with col4:
-        st.pyplot(plt.gcf(), style={'margin-top': '200%'}) # instead of plt.show()
+        st.pyplot(plt.gcf()) # instead of plt.show()
         st.write('Target Net Zero Cumulative Expeted and Unexpected Losses')
         st.markdown("""
             <p style= font-size:15px;color:#898A8B;text-align: left;'>
@@ -781,7 +781,7 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro_correl
     plt.show()
     #Graph 6
     with col6:
-        st.pyplot(plt.gcf(), style={'margin-top': '200%'}) # instead of plt.show()
+        st.pyplot(plt.gcf()) # instead of plt.show()
         st.write('Initial Portfolio Cumulative Expeted and Unexpected Loss')
         st.markdown("""
             <p style= font-size:15px;color:#898A8B;text-align: left;'>
