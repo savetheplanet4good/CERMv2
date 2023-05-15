@@ -35,6 +35,9 @@ theme = """
 
 ## Logo
 image = '/Users/u724552/Develop/CERMV2/amaltheafs-cerm_advanced-8589c3df9458/main/logos/fin_rwa.png'
+myCwd = os.getcwd();
+logo_path = os.path.join(myCwd, image)
+st.sidebar.image(logo_path,width=130)
 st.sidebar.markdown('**Macro Parameters:**')
 
 
