@@ -106,14 +106,14 @@ def params():
     #Green Portfolio
     green_option = st.sidebar.selectbox('Average Target Rating:',('BBB', 'AA','A','AAA','BB','B+','B','D'),key="7")
 
-    micro_correlation = st.sidebar.slider( 'Average Physical Risk Exposure ', min_value=0.0, step=.01, max_value=4.0, value=0.5, format="%f",key="3")
+    micro01 = st.sidebar.slider( 'Average Physical Risk Exposure ', min_value=0.0, step=.01, max_value=4.0, value=0.5, format="%f",key="3")
     st.sidebar.markdown( """
                                 <p style= font-size:12px;color:#898A8B;margin-top:-85px;margin-left:65px;'>
                                 
                                 </p>
                             """, unsafe_allow_html=True
                             )
-    micro_correlation = st.sidebar.slider( 'Average Transition Risk Exposure ', min_value=0.0, step=.01, max_value=4.0, value=0.0, format="%f",key="4")
+    micro02 = st.sidebar.slider( 'Average Transition Risk Exposure ', min_value=0.0, step=.01, max_value=4.0, value=0.0, format="%f",key="4")
     st.sidebar.markdown( """
                                 <p style= font-size:12px;color:#898A8B;margin-top:-85px;margin-left:65px;'>
                                 
@@ -126,8 +126,8 @@ def params():
     #Target rating
     a_option = st.sidebar.selectbox('Average Rating:',('BBB', 'AA','A','AAA','BB','B+','B','D'),key="8")
     
-    micro_correlation = st.sidebar.slider( 'Average Physical Risk Exposure ', min_value=0.0, step=.01, max_value=4.0, value=1.0, format="%f", key="5")
-    micro_correlation = st.sidebar.slider( 'Average Transition Exposure ', min_value=0.0, step=.01, max_value=4.0, value=2.0, format="%f", key="6")
+    micro11 = st.sidebar.slider( 'Average Physical Risk Exposure ', min_value=0.0, step=.01, max_value=4.0, value=1.0, format="%f", key="5")
+    micro12 = st.sidebar.slider( 'Average Transition Exposure ', min_value=0.0, step=.01, max_value=4.0, value=2.0, format="%f", key="6")
 
     # number of iterations for Monte-Carlo simulation
     st.sidebar.markdown("***")
@@ -143,7 +143,8 @@ def params():
 
 
     if st.sidebar.button(' Run Simulation'):
-        sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro_correlation,transition_target_date,a_option, N)
+        sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micro02,micro11,micro12,transition_target_date,a_option, N)
+
         
     st.sidebar.write("")
     st.markdown(button_style, unsafe_allow_html=True)
@@ -153,7 +154,7 @@ def percent(x, pos):
     #'%.3f%%'
 # SideBar Parameters
 #@st.cache(suppress_st_warning=True)
-def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro_correlation,transition_target_date,a_option, N):
+def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micro02,micro11,micro12,transition_target_date,a_option, N):
 
     # Preset Parameters    
     #transition efficiency coefficient (reduced)
@@ -513,12 +514,16 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro_correl
 
     #Average physical exposure (in comparaison with the global economy)
     #micro_correlation[0,:,1]=0.5
+    micro_correlation[0,:,1] = micro01
+
     #Slider from 0 to 4
 
     
 
     #Average transition exposure (in comparaison with the global economy)
     #micro_correlation[0,:,2]=0
+    micro_correlation[0,:,2] = micro02 
+
     #Slider from 0 to 4
 
 
@@ -527,11 +532,6 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro_correl
     #Transition target date
     
 
-
-  
-
-
-   
 
     A_Rating = a_option 
 
@@ -542,11 +542,15 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro_correl
 
     #Average physical exposure (in comparaison with the global economy)
     #micro_correlation[1,:,1]=1
+    micro_correlation[1,:,1] = micro11
+
     #Slider from 0 to 4
 
 
     #Average transition exposure (in comparaison with the global economy)
     #micro_correlation[1,:,2]=2
+    micro_correlation[1,:,2] = micro12
+
     #Slider from 0 to 4
 
 
