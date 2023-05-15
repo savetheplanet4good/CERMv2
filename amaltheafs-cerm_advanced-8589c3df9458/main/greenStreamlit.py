@@ -705,15 +705,8 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micr
     #Graph 4
     with col4:
         st.pyplot(plt.gcf()) # instead of plt.show()
-        st.write('Target Net Zero Cumulative Expeted and Unexpected Losses')
-        st.markdown("""
-            <p style= font-size:15px;color:#898A8B;text-align: left;'>
-            Plotting of evolution of expected loss and unexpected losses at risks risk1 and risk2.
-
-            </p>
-            """, unsafe_allow_html=True
-        )
-        st.write('')
+        #st.write('Target Net Zero Cumulative Expeted and Unexpected Losses')
+        
 
         
 
