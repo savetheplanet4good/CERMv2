@@ -687,17 +687,16 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micr
         
 
     #plotting of evolution of expected loss and unexpected losses at risks risk1 and risk2
-    plt.legend()
     plt.figure(figsize=(8, 6))
     plt.plot(el_g[0], label="expected loss")
     plt.plot(ul1_g[0], label="unexpected loss at risk "+str(int(100*risk1))+"%")
     plt.plot(ul2_g[0], label="unexpected loss at risk "+str(int(100*risk2))+"%")
-
     plt.xlabel("time",fontsize=10)
     plt.ylabel("loss",fontsize=10)
     plt.title("Cumulative expected and unexpected losses of the Target Net Zero portfolio",fontsize=10)
     plt.xticks(fontsize=8)
     plt.yticks(fontsize=8)
+    plt.legend()
 
    
 
