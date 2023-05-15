@@ -71,17 +71,17 @@ def params():
                             </p>
                         """, unsafe_allow_html=True
                         )
-    p = st.sidebar.slider( 'Physical Risk ', min_value=0.01, step=0.01, max_value=0.3, value=0.18, format="%f")
+    p = st.sidebar.slider( 'Climate Risk ', min_value=0.01, step=0.01, max_value=0.3, value=0.18, format="%f")
     st.sidebar.markdown( """ 
                             <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:90px;'>
-                             economic risk per year
+                             of the economic risk per year
                             </p>
                         """, unsafe_allow_html=True
                         )
-    Efficiency = st.sidebar.slider( 'Efficiency ', min_value=1, step=1, max_value=20, value=7, format="%f")
+    Efficiency = st.sidebar.slider( 'Efficiency ', min_value=1, step=1, max_value=20, value=7, format="%d%%")
     st.sidebar.markdown( """ 
                             <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:65px;'>
-                            transition efficiency coefficient (reduced)
+                            transition efficiency yield
                             </p>
                         """, unsafe_allow_html=True
                         )
@@ -104,7 +104,7 @@ def params():
     ## Target Net Zero
     st.sidebar.write('***Target net-zero portfolio:***')
     #Green Portfolio
-    green_option = st.sidebar.selectbox('Select Target Rating:',('BBB', 'AA','A','AAA','BB','B+','B','D'),key="7")
+    green_option = st.sidebar.selectbox('Average Target Rating:',('BBB', 'AA','A','AAA','BB','B+','B','D'),key="7")
 
     micro_correlation = st.sidebar.slider( 'Average Physical Risk Exposure ', min_value=0.0, step=.01, max_value=4.0, value=0.5, format="%f",key="3")
     st.sidebar.markdown( """
@@ -124,7 +124,7 @@ def params():
     #Portfolio A
     st.sidebar.write('***Initial portfolio:***')
     #Target rating
-    a_option = st.sidebar.selectbox('Select Target Rating:',('BBB', 'AA','A','AAA','BB','B+','B','D'),key="8")
+    a_option = st.sidebar.selectbox('Average Rating:',('BBB', 'AA','A','AAA','BB','B+','B','D'),key="8")
     
     micro_correlation = st.sidebar.slider( 'Average Physical Risk Exposure ', min_value=0.0, step=.01, max_value=4.0, value=1.0, format="%f", key="5")
     micro_correlation = st.sidebar.slider( 'Average Transition Exposure ', min_value=0.0, step=.01, max_value=4.0, value=2.0, format="%f", key="6")
