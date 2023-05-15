@@ -14,6 +14,7 @@ from LargeCERMEngine import LargeCERMEngine
 import datetime
 from PIL import Image
 import matplotlib.ticker as mtick
+import os
 
 Image.MAX_IMAGE_PIXELS = 1000000000 
 
@@ -32,6 +33,8 @@ theme = """
     primaryColor="#4cb744"
 """
 
+## Logo
+image = 'amaltheafs-cerm_advanced-8589c3df9458/main/logos/fin_rwa.png'
 st.sidebar.markdown('**Macro Parameters:**')
 
 
