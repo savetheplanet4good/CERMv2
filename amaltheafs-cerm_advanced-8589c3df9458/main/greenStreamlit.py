@@ -34,7 +34,7 @@ theme = """
 """
 
 ## Logo
-image = 'amaltheafs-cerm_advanced-8589c3df9458/main/logos/fin_rwa.png'
+image = '/Users/u724552/Develop/CERMV2/amaltheafs-cerm_advanced-8589c3df9458/main/logos/fin_rwa.png'
 st.sidebar.markdown('**Macro Parameters:**')
 
 
