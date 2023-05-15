@@ -46,13 +46,13 @@ def heading():
 
     st.markdown("""
         <h1 style='text-align: center; margin-bottom: -35px;'>
-        Green RWA
+        CERM
         </h1>
     """, unsafe_allow_html=True
     )
     st.markdown("""
         <h6 style='text-align: center; margin-bottom: -35px;'>
-        A Stochastic Climate Model - An approach to calibrate the Climate-Extended Risk Model (CERM) 
+        Climate-Extended Risk Model 
         </h6>
         <br>
         <br>
@@ -207,9 +207,9 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micr
     col9, inter_cols_pace = st.columns(2)
     st.write("### Global Climate-Related Risk")        
     col1, col2 = st.columns(2)
-    st.write("### Target Net Zero")
+    st.write("### Target Net Zero Portfolio")
     col3, col4 = st.columns(2)
-    st.write("### Initial Portfolio losses")
+    st.write("### Initial Portfolio")
     col5, col6 = st.columns(2)
     st.write("### Transition Portfolio: ")
     col7, col8 = st.columns(2)
@@ -332,7 +332,7 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micr
 
     plt.figure(figsize=(6, 4.5))
     plt.plot(range(1,horizon), macros[1:,:], label=["economic","physical","transition"])
-    plt.title("Physical risk against economical risk in the absence of transition effort over "+str(horizon)+" years",fontsize=10)
+    plt.title("Physical, Transition and Economic macro correlation over "+str(horizon)+" years",fontsize=10)
     plt.ylabel("Normalized risk factor",fontsize=10)
     plt.xlabel("year",fontsize=10)
     plt.legend(fontsize=5,loc='lower right')
@@ -345,7 +345,7 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micr
     with col1:
         fig1 = plt.figure(figsize=(16,12))
         plt.plot(range(1,horizon), macros[1:,:], label=["economic","physical","transition"])
-        plt.title("Physical risk against economical risk in the absence of transition effort over "+str(horizon)+" years",fontsize=20)
+        plt.title("Physical, Transition and Economic macro correlation over "+str(horizon)+" years",fontsize=20)        
         plt.ylabel("Normalized risk factor",fontsize=25)
         plt.xlabel("year",fontsize=25)
         plt.legend(fontsize=19,loc='lower right')
@@ -353,15 +353,8 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micr
         plt.yticks(fontsize=20)
         plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(xmax=1))
         st.pyplot(fig1)
-        st.write('Comparing Physical and Economic Risks Without Transition')
-        st.markdown("""
-                    <p style= font-size:15px;color:#898A8B;text-align: left;'>
-                    Calibrating physical and transition macro-correlation curves.
-
-
-                    </p>
-                    """, unsafe_allow_html=True
-                )
+        #st.write('Comparing Physical and Economic Risks Without Transition')
+       
               
     
     # we compute the climate scenario until 2 * horizon to get auto- and cross- correlations as delayed as the horizon
@@ -457,14 +450,8 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micr
         plt.xticks(fontsize=20)
         plt.yticks(fontsize=20)
         st.pyplot(fig2)
-        st.write("Amortizing Physical Risk Auto-Correlation Time")
-        st.markdown("""
-                            <p style= font-size:15px;color:#898A8B;text-align: left;'>
-                            Initializing physical auto-correlations.
-
-                            </p>
-                            """, unsafe_allow_html=True
-                        )
+        #st.write("Amortizing Physical Risk Auto-Correlation Time")
+       
             
             
 
@@ -696,14 +683,8 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micr
     # Graph 3
     with col3:
         st.pyplot(plt.gcf()) # instead of plt.show()
-        st.write('Target Net Zero Cumilative Loss Distribution')
-        st.markdown("""
-            <p style= font-size:15px;color:#898A8B;text-align: left;'>
-            Plotting of final loss distribution, along with expected loss and unexpected losses at risks risk1 and risk2.
-
-            </p>
-            """, unsafe_allow_html=True
-        )
+        #st.write('Target Net Zero Cumilative Loss Distribution')
+        
 
     #plotting of evolution of expected loss and unexpected losses at risks risk1 and risk2
     plt.legend()
@@ -767,14 +748,8 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micr
     ## Graph5
     with col5:
         st.pyplot(plt.gcf()) # instead of plt.show()
-        st.write('Initial Portfolio Cumulative Loss Distribution')
-        st.markdown("""
-            <p style= font-size:15px;color:#898A8B;text-align: left;'>
-            Plotting of final loss distribution, along with expected loss and unexpected losses at risks risk1 and risk2.
-
-            </p>
-            """, unsafe_allow_html=True
-        )
+        #st.write('Initial Portfolio Cumulative Loss Distribution')
+        
 
     #plotting of evolution of expected loss and unexpected losses at risks risk1 and risk2
 
@@ -793,14 +768,8 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micr
     #Graph 6
     with col6:
         st.pyplot(plt.gcf()) # instead of plt.show()
-        st.write('Initial Portfolio Cumulative Expeted and Unexpected Loss')
-        st.markdown("""
-            <p style= font-size:15px;color:#898A8B;text-align: left;'>
-            Plotting of evolution of expected loss and unexpected losses at risks risk1 and risk2.
-
-            </p>
-            """, unsafe_allow_html=True
-        )
+        #st.write('Initial Portfolio Cumulative Expeted and Unexpected Loss')
+        
     #st.pyplot(plt.gcf()) # instead of plt.show()
 
     
@@ -832,15 +801,8 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micr
     #Graph 7
     with col7:
         st.pyplot(plt.gcf()) # instead of plt.show()
-        st.write('Transition Portfolio of Cumulative Loss Distribution')
-        st.markdown("""
-            <p style= font-size:15px;color:#898A8B;text-align: left;'>
-            Plotting of final loss distribution, along with expected loss and unexpected losses at risks risk1 and risk2.
-
-
-            </p>
-            """, unsafe_allow_html=True
-        )
+        #st.write('Transition Portfolio of Cumulative Loss Distribution')
+        
 
     #plotting of evolution of expected loss and unexpected losses at risks risk1 and risk2
 
@@ -860,15 +822,8 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micr
     #Graph 8
     with col8:
         st.pyplot(plt.gcf()) # instead of plt.show()
-        st.write('Transition Portfolio of Expected and Unexpected Losses')
-        st.markdown("""
-            <p style= font-size:15px;color:#898A8B;text-align: left;'>
-            Plotting of evolution of expected loss and unexpected losses at risks risk1 and risk2.
-
-
-            </p>
-            """, unsafe_allow_html=True
-        )
+        #st.write('Transition Portfolio of Expected and Unexpected Losses')
+        
 
     #plotting of evolution of unexpected loss
 
@@ -901,15 +856,9 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micr
         ##Plotting of evolution of unexpected loss.
         st.pyplot(plt.gcf()) # instead of plt.show()
         ##st.write('Portfolio Unexpected Cumulative Loss')
-        st.write('Portfolio of Unexpected Loss')
+        #st.write('Portfolio of Unexpected Loss')
 
-        st.markdown("""
-                                <p style= font-size:15px;color:#898A8B;text-align: left;'>
-                                Plotting of evolution of unexpected loss.
-
-                                </p>
-                                """, unsafe_allow_html=True
-                            )
+        
 
     
 
