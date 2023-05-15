@@ -202,9 +202,10 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro_correl
     plt.legend(fontsize=18,loc='lower right')
     #plt.show()
     
-    st.write("### Global Climate-Related Risk")         
-
-    col1, col9, col2 = st.columns(3)
+    st.write("### Unexpected Loss")   
+    col9, inter_cols_pace = st.columns(2)
+    st.write("### Global Climate-Related Risk")        
+    col1, col2 = st.columns(2)
     st.write("### Target Net Zero")
     col3, col4 = st.columns(2)
     st.write("### Initial Portfolio losses")
