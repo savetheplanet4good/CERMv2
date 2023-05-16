@@ -687,16 +687,32 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micr
         
 
     #plotting of evolution of expected loss and unexpected losses at risks risk1 and risk2
-    plt.figure(figsize=(8, 6))
-    plt.plot(el_g[0], label="expected loss")
-    plt.plot(ul1_g[0], label="unexpected loss at risk "+str(int(100*risk1))+"%")
-    plt.plot(ul2_g[0], label="unexpected loss at risk "+str(int(100*risk2))+"%")
+    fig, ax1 = plt.subplots(figsize=(8, 6))
+    ax2.plot(el_g[0], label="expected loss")
+    ax2.plot(ul1_g[0], label="unexpected loss at risk "+str(int(100*risk1))+"%")
+    ax2.plot(ul2_g[0], label="unexpected loss at risk "+str(int(100*risk2))+"%")
+    
+    # Remove the existing y-axis on the left side
+    ax1.spines['left'].set_color('none')
+    ax1.yaxis.set_visible(False)
+    plt.xlabel("time")
+
+    # Create a new y-axis with a range of 0 to 1 on the left side
+    ax2 = ax1.twinx()
+    ax2.set_ylim(0, 1)
+    ax2.spines['right'].set_color('none')
+    ax2.yaxis.set_visible(True)
+    ax2.yaxis.tick_left()
+    ax2.yaxis.set_ticks_position('left')
+    ax2.set_ylabel("loss", labelpad=10)
+    ax2.yaxis.set_label_coords(-0.12, 0.5)  # Adjust the position of the y-label
+    plt.xlabel("time")
+
     plt.xlabel("time",fontsize=10)
     plt.ylabel("loss",fontsize=10)
     plt.title("Cumulative expected and unexpected losses of the Target Net Zero portfolio",fontsize=10)
     plt.xticks(fontsize=8)
-    plt.yticks(fontsize=8)
-    plt.legend()
+    ax1.legend()
 
    
 
@@ -745,17 +761,32 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micr
 
     #plotting of evolution of expected loss and unexpected losses at risks risk1 and risk2
 
-    plt.figure(figsize=(8, 6))
-    plt.plot(el_g[1], label="expected loss")
-    plt.plot(ul1_g[1], label="unexpected loss at risk "+str(int(100*risk1))+"%")
-    plt.plot(ul2_g[1], label="unexpected loss at risk "+str(int(100*risk2))+"%")
+    fig, ax1 = plt.subplots(figsize=(8, 6))
+    ax1.plot(el_g[1], label="expected loss")
+    ax1.plot(ul1_g[1], label="unexpected loss at risk "+str(int(100*risk1))+"%")
+    ax1.plot(ul2_g[1], label="unexpected loss at risk "+str(int(100*risk2))+"%")
+
+    # Remove the existing y-axis on the left side
+    ax1.spines['left'].set_color('none')
+    ax1.yaxis.set_visible(False)
+    plt.xlabel("time")
+
+    # Create a new y-axis with a range of 0 to 1 on the left side
+    ax2 = ax1.twinx()
+    ax2.set_ylim(0, 1)
+    ax2.spines['right'].set_color('none')
+    ax2.yaxis.set_visible(True)
+    ax2.yaxis.tick_left()
+    ax2.yaxis.set_ticks_position('left')
+    ax2.set_ylabel("loss", labelpad=10)
+    ax2.yaxis.set_label_coords(-0.12, 0.5)  # Adjust the position of the y-label
+    plt.xlabel("time")
 
     plt.xlabel("time",fontsize=10)
     plt.ylabel("loss",fontsize=10)
     plt.title("Cumulative expected and unexpected losses of the initial portfolio",fontsize=10)
-    #plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(xmax=1))
-
-    plt.legend()
+    plt.xticks(fontsize=8)
+    ax1.legend()
     plt.show()
     #Graph 6
     with col6:
@@ -798,17 +829,32 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micr
 
     #plotting of evolution of expected loss and unexpected losses at risks risk1 and risk2
 
-    plt.figure(figsize=(8, 6))
-    plt.plot(el_g[2], label="expected loss")
-    plt.plot(ul1_g[2], label="unexpected loss at risk "+str(int(100*risk1))+"%")
-    plt.plot(ul2_g[2], label="unexpected loss at risk "+str(int(100*risk2))+"%")
+    fig, ax1 = plt.subplots(figsize=(8, 6))
+    ax1.plot(el_g[2], label="expected loss")
+    ax1.plot(ul1_g[2], label="unexpected loss at risk "+str(int(100*risk1))+"%")
+    ax1.plot(ul2_g[2], label="unexpected loss at risk "+str(int(100*risk2))+"%")
+
+    # Remove the existing y-axis on the left side
+    ax1.spines['left'].set_color('none')
+    ax1.yaxis.set_visible(False)
+    plt.xlabel("time")
+    # Create a new y-axis with a range of 0 to 1 on the left side
+    ax2 = ax1.twinx()
+    ax2.set_ylim(0, 1)
+    ax2.spines['right'].set_color('none')
+    ax2.yaxis.set_visible(True)
+    ax2.yaxis.tick_left()
+    ax2.yaxis.set_ticks_position('left')
+    ax2.set_ylabel("loss", labelpad=10)
+    ax2.yaxis.set_label_coords(-0.12, 0.5)  # Adjust the position of the y-label
+    plt.xlabel("time")
 
     plt.xlabel("time")
     plt.ylabel("loss")
     plt.title("Cumulative expected and unexpected losses of the transition portfolio" ,fontsize=10)
     plt.xticks(fontsize=8)
     plt.yticks(fontsize=8)
-    plt.legend()
+    ax1.legend()
     
     plt.show()
     #Graph 8
