@@ -688,9 +688,9 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micr
 
     #plotting of evolution of expected loss and unexpected losses at risks risk1 and risk2
     fig, ax1 = plt.subplots(figsize=(8, 6))
-    ax2.plot(el_g[0], label="expected loss")
-    ax2.plot(ul1_g[0], label="unexpected loss at risk "+str(int(100*risk1))+"%")
-    ax2.plot(ul2_g[0], label="unexpected loss at risk "+str(int(100*risk2))+"%")
+    ax1.plot(el_g[0], label="expected loss")
+    ax1.plot(ul1_g[0], label="unexpected loss at risk "+str(int(100*risk1))+"%")
+    ax1.plot(ul2_g[0], label="unexpected loss at risk "+str(int(100*risk2))+"%")
     
     # Remove the existing y-axis on the left side
     ax1.spines['left'].set_color('none')
