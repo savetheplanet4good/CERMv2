@@ -78,6 +78,13 @@ def params():
                             </p>
                         """, unsafe_allow_html=True
                         )
+    stress_test = st.sidebar.slider( 'Physical Stress Test', min_value=-200, step=1, max_value=0, value=-50, format="%d%%")
+    st.sidebar.markdown( """ 
+                            <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:120px;'>
+                             in percentage of physical risk
+                            </p>
+                        """, unsafe_allow_html=True
+                        )
     Efficiency = st.sidebar.slider( 'Efficiency ', min_value=1, step=1, max_value=20, value=7, format="%d%%")
     st.sidebar.markdown( """ 
                             <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:65px;'>
@@ -143,7 +150,7 @@ def params():
 
 
     if st.sidebar.button(' Run Simulation'):
-        sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micro02,micro11,micro12,transition_target_date,a_option, N)
+        sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option,micro01,micro02,micro11,micro12,transition_target_date,a_option, N)
 
         
     st.sidebar.write("")
@@ -154,7 +161,7 @@ def percent(x, pos):
     #'%.3f%%'
 # SideBar Parameters
 #@st.cache(suppress_st_warning=True)
-def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micro02,micro11,micro12,transition_target_date,a_option, N):
+def sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option,micro01,micro02,micro11,micro12,transition_target_date,a_option, N):
 
     # Preset Parameters    
     #transition efficiency coefficient (reduced)
@@ -184,10 +191,18 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micr
     # slider from 0% to 30% "of the economic risk per year" 
     #idiosyncratic physical risk
     #p = 0.18
+    p=p/100
+
     #Slider from 0 to 0.3
+
+    ### 2b) Physical stress test
+    #Physical stess test (in percentage of physical risk)
+    ##stress_test=-50
+    stress_test=stress_test/100
+    #Slider from -200% to 0%
    
     
-    scenario = ScenarioGenerator(horizon, alpha, beta, gamma, R, e, p, theta)
+    scenario = ScenarioGenerator(horizon, alpha, beta, gamma, R, e, p, theta, stress_test)
     scenario.compute()
 
     #logging of all macro-correlations evolutions
@@ -223,7 +238,7 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micr
 
     # we compute the climate scenario until 2 * horizon to get auto- and cross- correlations as delayed as the horizon
 
-    scenario_extended = ScenarioGenerator(2 * horizon, alpha, beta, gamma, R, e, p, theta)
+    scenario_extended = ScenarioGenerator(2 * horizon, alpha, beta, gamma, R, e, p, theta, stress_test)
     scenario_extended.compute()
 
     # generation of the incremental matrix
@@ -321,7 +336,7 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micr
 
     beta = Reactivity
 
-    scenario = ScenarioGenerator(horizon, alpha, beta, gamma, R, e, p, theta)
+    scenario = ScenarioGenerator(horizon, alpha, beta, gamma, R, e, p, theta, stress_test)
     scenario.compute()
 
     #logging of all macro-correlations evolutions
@@ -359,7 +374,7 @@ def sideBar(horizon, p, Efficiency,Reactivity,duration,green_option,micro01,micr
     
     # we compute the climate scenario until 2 * horizon to get auto- and cross- correlations as delayed as the horizon
 
-    scenario_extended = ScenarioGenerator(2 * horizon, alpha, beta, gamma, R, e, p, theta)
+    scenario_extended = ScenarioGenerator(2 * horizon, alpha, beta, gamma, R, e, p, theta, stress_test)
     scenario_extended.compute()
 
     # generation of the incremental matrix
