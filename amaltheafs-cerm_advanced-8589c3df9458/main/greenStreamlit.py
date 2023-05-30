@@ -73,14 +73,14 @@ def params():
                         )
     p = st.sidebar.slider( 'Physical Risk Accelaration ', min_value=0, step=1, max_value=30, value=18, format="%d%%")
     st.sidebar.markdown( """ 
-                            <p style= font-size:10px;color:#898A8B;margin-top:-100px;margin-left:140px;'>
-                            in percentage of the economic risk standard deviation
+                            <p style= font-size:10px;color:#898A8B;margin-top:-100px;margin-left:150px;'>
+                            economic risk standard deviation
                             </p>
                         """, unsafe_allow_html=True
                         )
     stress_test = st.sidebar.slider( 'Physical Drift', min_value=-100, step=1, max_value=0, value=-50, format="%d%%")
     st.sidebar.markdown( """ 
-                            <p style= font-size:11px;color:#898A8B;margin-top:-100px;margin-left:95px;'>
+                            <p style= font-size:11px;color:#898A8B;margin-top:-100px;margin-left:90px;'>
                              in percentage of physical risk standard deviation
                             </p>
                         """, unsafe_allow_html=True
@@ -171,7 +171,7 @@ def sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option
     beta = 0.001
 
     #climate change intensity of the economic activity (idiosyncratic)
-    gamma = 0
+    gamma = 0.02
 
     #hypothetical climate-free average growth rate of log GDP
     R = 2
@@ -219,7 +219,7 @@ def sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option
     #plt.show()
     
     st.write("### Expected & Unexpected Loss: ")   
-    col9, inter_cols_pace = st.columns(2)
+    col10, col9 = st.columns(2)
     st.write("### Global Climate-Related Risk: ")        
     col1, col2 = st.columns(2)
     st.write("### Target Portfolio: ")
@@ -578,8 +578,9 @@ def sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option
 
 
 
-    size=world_portfolio.EAD(1,TEST_8_RATINGS).sum()
-    target=world_portfolio.EAD(1,TEST_8_RATINGS).sum(axis=0)[0]/size
+    size=world_portfolio.EAD(1,TEST_8_RATINGS)[0].sum()
+    target=world_portfolio.EAD(1,TEST_8_RATINGS).sum(axis=0)[0]/size/3
+    loan_profile=world_portfolio.EAD(1,TEST_8_RATINGS)[:]/size
 
     portfolio_dict = show(portfolio)
     all_loans = np.vstack(portfolio_dict.values())
@@ -687,7 +688,7 @@ def sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option
 
     plt.xlabel("loss",fontsize=10)
     plt.ylabel("number of occurences",fontsize=10)
-    plt.title("Cumilative loss distribution of the Target Net Zero portfolio over " +str(horizon)+ " years",fontsize=10)
+    plt.title("Cumilative loss distribution of the target portfolio over " +str(horizon)+ " years",fontsize=10)
     plt.xlim([0, 1000000000])
     plt.ylim([0, 250])
     plt.xticks(fontsize=8)
@@ -704,8 +705,10 @@ def sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option
     #plotting of evolution of expected loss and unexpected losses at risks risk1 and risk2
     fig, ax1 = plt.subplots(figsize=(8, 6))
     ax1.plot(el_g[0], label="expected loss")
-    ax1.plot(ul1_g[0], label="unexpected loss at risk "+str(int(100*risk1))+"%")
-    ax1.plot(ul2_g[0], label="unexpected loss at risk "+str(int(100*risk2))+"%")
+    #ax1.plot(ul1_g[0], label="unexpected loss at risk "+str(int(100*risk1))+"%")
+    #ax1.plot(ul2_g[0], label="unexpected loss at risk "+str(int(100*risk2))+"%")
+    ax1.plot(ul1_g[0], label="unexpected loss at "+str(100-int(100*risk1))+"%")
+    ax1.plot(ul2_g[0], label="unexpected loss at "+str(100-int(100*risk2))+"%")
     
     # Remove the existing y-axis on the left side
     ax1.spines['left'].set_color('none')
@@ -725,7 +728,7 @@ def sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option
 
     plt.xlabel("time",fontsize=10)
     plt.ylabel("loss",fontsize=10)
-    plt.title("Cumulative expected and unexpected losses of the Target Net Zero portfolio",fontsize=10)
+    plt.title("Cumulative expected and unexpected losses of the target portfolio",fontsize=10)
     plt.xticks(fontsize=8)
     ax1.legend()
 
@@ -778,8 +781,8 @@ def sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option
 
     fig, ax1 = plt.subplots(figsize=(8, 6))
     ax1.plot(el_g[1], label="expected loss")
-    ax1.plot(ul1_g[1], label="unexpected loss at risk "+str(int(100*risk1))+"%")
-    ax1.plot(ul2_g[1], label="unexpected loss at risk "+str(int(100*risk2))+"%")
+    ax1.plot(ul1_g[1], label="unexpected loss at risk "+str(100-int(100*risk1))+"%")
+    ax1.plot(ul2_g[1], label="unexpected loss at risk "+str(100-int(100*risk2))+"%")
 
     # Remove the existing y-axis on the left side
     ax1.spines['left'].set_color('none')
@@ -808,9 +811,6 @@ def sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option
         st.pyplot(plt.gcf()) # instead of plt.show()
         #st.write('Initial Portfolio Cumulative Expeted and Unexpected Loss')
         
-    #st.pyplot(plt.gcf()) # instead of plt.show()
-
-    
     draws = np.sort(sorted_losses[:,2,-1])
     expected_loss= draws.sum()/N
     unexpected_loss1=draws[ind1]
@@ -846,8 +846,8 @@ def sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option
 
     fig, ax1 = plt.subplots(figsize=(8, 6))
     ax1.plot(el_g[2], label="expected loss")
-    ax1.plot(ul1_g[2], label="unexpected loss at risk "+str(int(100*risk1))+"%")
-    ax1.plot(ul2_g[2], label="unexpected loss at risk "+str(int(100*risk2))+"%")
+    ax1.plot(ul1_g[2], label="unexpected loss at risk "+str(100-int(100*risk1))+"%")
+    ax1.plot(ul2_g[2], label="unexpected loss at risk "+str(100-int(100*risk2))+"%")
 
     # Remove the existing y-axis on the left side
     ax1.spines['left'].set_color('none')
@@ -882,7 +882,7 @@ def sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option
 
 
     plt.figure(figsize=(16,12))
-    plt.plot((ul1_g[0]-el_g[0])/1000000000, label="Net Zero target",color ='green')
+    plt.plot((ul1_g[0]-el_g[0])/1000000000, label="Target portfolio",color ='green')
     plt.plot((ul1_g[1]-el_g[1])/1000000000, label="Initial Portfolio",color='red')
     plt.plot((ul1_g[2]-el_g[2])/1000000000, label="Transition Portfolio",color='blue')
     #plt.plot((ul1_AB-el_AB)/2000000000, label="Portfolio A+B",color='purple')
@@ -899,7 +899,7 @@ def sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option
 
     plt.xlabel("year",fontsize=25)
     plt.ylabel("unexpected loss",fontsize=25)
-    plt.title("Cumulative unexpected loss of each portfolio",fontsize=25)
+    plt.title("Cumulative unexpected loss at "+str(100-int(100*risk1))+"% of each portfolio",fontsize=20)
     plt.xticks(fontsize=20)
     plt.yticks(fontsize=20) 
 
@@ -912,8 +912,27 @@ def sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option
         #st.write('Portfolio of Unexpected Loss')
 
         
+    ## Portfolio expected loss
+    #plotting of evolution of expected loss
+    plt.figure(figsize=(16,12))
+    plt.plot((el_g[0])/1000000000, label="Target portfolio",color ='green')
+    plt.plot((el_g[1])/1000000000, label="Initial portfolio",color='red')
+    plt.plot((el_g[2])/1000000000, label="Transition portfolio",color='blue')
 
-    
+    plt.legend(fontsize=18,loc='upper left')
+    plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(xmax=1))
+    plt.ylim([0, 0.7])
+
+    plt.xlabel("year",fontsize=18)
+    plt.ylabel("Expected loss",fontsize=18)
+    plt.title("Cumulative expected loss of each portfolio",fontsize=20)
+
+
+    plt.show()
+
+    with col10:
+        ##Plotting of evolution of expected loss.
+        st.pyplot(plt.gcf()) # instead of plt.show()
 
 
 
