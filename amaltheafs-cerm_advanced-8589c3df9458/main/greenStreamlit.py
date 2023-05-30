@@ -87,14 +87,14 @@ def params():
                         )
     Efficiency = st.sidebar.slider( 'Transition Efficiency ', min_value=1, step=1, max_value=20, value=7, format="%d%%")
     st.sidebar.markdown( """ 
-                            <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:90px;'>
+                            <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:120px;'>
                             transition efficiency yield
                             </p>
                         """, unsafe_allow_html=True
                         )
     Reactivity = st.sidebar.slider( 'Transition Reactivity ', min_value=.001, step=.001, max_value=2.000, value=0.5, format="%f")
     st.sidebar.markdown( """ 
-                            <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:90px;'>
+                            <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:120px;'>
                              transition effort reactivity coefficient
                             </p>
                         """, unsafe_allow_html=True
