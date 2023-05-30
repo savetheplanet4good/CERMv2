@@ -40,7 +40,7 @@ class ScenarioGenerator:
         array of risk factors covariance matrices
     """
 
-    def __init__(self, horizon, alpha, beta, gamma, R, e, p, theta):
+    def __init__(self, horizon, alpha, beta, gamma, R, e, p, theta, stress_test):
         """
         Constructs all the necessary attributes for the ScenarioGenerator object.
         
@@ -73,6 +73,7 @@ class ScenarioGenerator:
         self.e = e
         self.p_tilde = p
         self.theta = theta
+        self.stress_test = stress_test
 
         #reduction of parameters
 
@@ -101,6 +102,7 @@ class ScenarioGenerator:
         R = self.R
         e = self.e
         theta = self.theta
+        stress_test=self.stress_test
     
         q = self.q
         sigma_squared = self.sigma_squared
@@ -143,8 +145,12 @@ class ScenarioGenerator:
 
         self.rf_correlation = np.zeros((self.horizon, self.nb_rf, self.nb_rf))
 
+        #stress test
+        stress=np.array([[0],[stress_test],[stress_test]])
+        
         #execution
 
+        
         for t in range(1, self.horizon):
 
             #update of risks
@@ -168,9 +174,15 @@ class ScenarioGenerator:
             macro_correlation = (np.array([np.sqrt(np.diag(var))])).T
             self.macro_correlation[:, [t]] = macro_correlation
 
+            
+            
             #update of standardized risks
             self.risk[:, [t]] = z_risk / macro_correlation
             self.risk[:, [t]][macro_correlation == 0] = z_risk[macro_correlation == 0]
+            
+            #stress
+            self.risk[:, [t]]+=stress
+    
 
         #calculation of unconditional probability of net-zero transition
 
