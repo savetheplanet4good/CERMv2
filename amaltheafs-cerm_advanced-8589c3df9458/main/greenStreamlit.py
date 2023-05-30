@@ -78,21 +78,21 @@ def params():
                             </p>
                         """, unsafe_allow_html=True
                         )
-    stress_test = st.sidebar.slider( 'Physical Stress Test', min_value=-200, step=1, max_value=0, value=-50, format="%d%%")
+    stress_test = st.sidebar.slider( 'Physical Stress Test', min_value=-100, step=1, max_value=0, value=-50, format="%d%%")
     st.sidebar.markdown( """ 
                             <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:120px;'>
-                             in percentage of physical risk
+                             of physical risk standard deviation
                             </p>
                         """, unsafe_allow_html=True
                         )
-    Efficiency = st.sidebar.slider( 'Efficiency ', min_value=1, step=1, max_value=20, value=7, format="%d%%")
+    Efficiency = st.sidebar.slider( 'Transition Efficiency ', min_value=1, step=1, max_value=20, value=7, format="%d%%")
     st.sidebar.markdown( """ 
                             <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:65px;'>
                             transition efficiency yield
                             </p>
                         """, unsafe_allow_html=True
                         )
-    Reactivity = st.sidebar.slider( 'Reactivity ', min_value=.001, step=.001, max_value=2.000, value=0.5, format="%f")
+    Reactivity = st.sidebar.slider( 'Transition Reactivity ', min_value=.001, step=.001, max_value=2.000, value=0.5, format="%f")
     st.sidebar.markdown( """ 
                             <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:65px;'>
                              transition effort reactivity coefficient
