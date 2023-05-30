@@ -923,10 +923,11 @@ def sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option
     plt.gca().yaxis.set_major_formatter(mtick.PercentFormatter(xmax=1))
     plt.ylim([0, 0.7])
 
-    plt.xlabel("year",fontsize=18)
-    plt.ylabel("Expected loss",fontsize=18)
+    plt.xlabel("year",fontsize=25)
+    plt.ylabel("Expected loss",fontsize=25)
     plt.title("Cumulative expected loss of each portfolio",fontsize=20)
-
+    plt.xticks(fontsize=20)
+    plt.yticks(fontsize=20) 
 
     plt.show()
 
