@@ -71,30 +71,30 @@ def params():
                             </p>
                         """, unsafe_allow_html=True
                         )
-    p = st.sidebar.slider( 'Climate Risk ', min_value=0.01, step=0.01, max_value=0.3, value=0.18, format="%f")
+    p = st.sidebar.slider( 'Physical Risk Accelaration ', min_value=0, step=1, max_value=30, value=18, format="%d%%")
     st.sidebar.markdown( """ 
-                            <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:90px;'>
-                             of the economic risk per year
+                            <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:110px;'>
+                            in percentage of the economic risk standard deviation
                             </p>
                         """, unsafe_allow_html=True
                         )
-    stress_test = st.sidebar.slider( 'Physical Stress Test', min_value=-100, step=1, max_value=0, value=-50, format="%d%%")
+    stress_test = st.sidebar.slider( 'Physical Drift', min_value=-100, step=1, max_value=0, value=-50, format="%d%%")
     st.sidebar.markdown( """ 
-                            <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:120px;'>
-                             of physical risk standard deviation
+                            <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:110px;'>
+                             in percentage of physical risk standard deviation
                             </p>
                         """, unsafe_allow_html=True
                         )
     Efficiency = st.sidebar.slider( 'Transition Efficiency ', min_value=1, step=1, max_value=20, value=7, format="%d%%")
     st.sidebar.markdown( """ 
-                            <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:120px;'>
+                            <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:130px;'>
                             transition efficiency yield
                             </p>
                         """, unsafe_allow_html=True
                         )
     Reactivity = st.sidebar.slider( 'Transition Reactivity ', min_value=.001, step=.001, max_value=2.000, value=0.5, format="%f")
     st.sidebar.markdown( """ 
-                            <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:120px;'>
+                            <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:130px;'>
                              transition effort reactivity coefficient
                             </p>
                         """, unsafe_allow_html=True
@@ -109,7 +109,7 @@ def params():
                         """, unsafe_allow_html=True
                         )
     ## Target Net Zero
-    st.sidebar.write('***Target net-zero portfolio:***')
+    st.sidebar.write('***Target portfolio:***')
     #Green Portfolio
     green_option = st.sidebar.selectbox('Average Target Rating:',('AAA', 'AA','A','BBB','BB','B+','B','D'),key="7")
 
@@ -218,11 +218,11 @@ def sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option
     plt.legend(fontsize=18,loc='lower right')
     #plt.show()
     
-    st.write("### Unexpected Loss: ")   
+    st.write("### Expected & Unexpected Loss: ")   
     col9, inter_cols_pace = st.columns(2)
     st.write("### Global Climate-Related Risk: ")        
     col1, col2 = st.columns(2)
-    st.write("### Target Net Zero Portfolio: ")
+    st.write("### Target Portfolio: ")
     col3, col4 = st.columns(2)
     st.write("### Initial Portfolio: ")
     col5, col6 = st.columns(2)
