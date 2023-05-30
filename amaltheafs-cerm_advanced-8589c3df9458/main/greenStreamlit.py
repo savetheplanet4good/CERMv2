@@ -73,14 +73,14 @@ def params():
                         )
     p = st.sidebar.slider( 'Physical Risk Accelaration ', min_value=0, step=1, max_value=30, value=18, format="%d%%")
     st.sidebar.markdown( """ 
-                            <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:110px;'>
+                            <p style= font-size:10px;color:#898A8B;margin-top:-100px;margin-left:120px;'>
                             in percentage of the economic risk standard deviation
                             </p>
                         """, unsafe_allow_html=True
                         )
     stress_test = st.sidebar.slider( 'Physical Drift', min_value=-100, step=1, max_value=0, value=-50, format="%d%%")
     st.sidebar.markdown( """ 
-                            <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:110px;'>
+                            <p style= font-size:11px;color:#898A8B;margin-top:-100px;margin-left:100px;'>
                              in percentage of physical risk standard deviation
                             </p>
                         """, unsafe_allow_html=True
@@ -94,7 +94,7 @@ def params():
                         )
     Reactivity = st.sidebar.slider( 'Transition Reactivity ', min_value=.001, step=.001, max_value=2.000, value=0.5, format="%f")
     st.sidebar.markdown( """ 
-                            <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:130px;'>
+                            <p style= font-size:11px;color:#898A8B;margin-top:-100px;margin-left:130px;'>
                              transition effort reactivity coefficient
                             </p>
                         """, unsafe_allow_html=True
