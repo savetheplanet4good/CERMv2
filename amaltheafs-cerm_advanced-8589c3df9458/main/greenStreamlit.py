@@ -598,7 +598,8 @@ def sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option
 
     #computation of all losses through LCERM
 
-    engine = LargeCERMEngine(portfolio, TEST_8_RATINGS,scenario,duration,target,micro_correlation,transition_target_date)
+    engine = LargeCERMEngine(portfolio, TEST_8_RATINGS,scenario,duration,loan_profile,micro_correlation,transition_target_date)
+
     engine.compute(N)
 
     #definition of risk indices matching risk1 and risk2
