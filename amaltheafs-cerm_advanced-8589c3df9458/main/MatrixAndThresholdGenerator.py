@@ -39,7 +39,7 @@ class MatrixAndThresholdGenerator:
         regulatory factor loadings
     """
 
-    def __init__(self, ratings, groups, scenarios, duration,loan_profile,micro_correlation,transition_target_date, sensitivity_objective="regular"):
+    def __init__(self, ratings, groups, scenarios,duration,loan_profile,micro_correlation,transition_target_date, sensitivity_objective="regular"):
         """
         Constructs all the necessary attributes for the MatrixAndThresholdGenerator object.
         
@@ -99,14 +99,27 @@ class MatrixAndThresholdGenerator:
 
         #print(loan_profile)
         
-        self.amortization_matrices=np.zeros((nb_groups, nb_ratings, nb_ratings))
+        self.amortization_matrices=np.zeros((self.scenarios.horizon,nb_groups, nb_ratings, nb_ratings))
         self.amortization=1/duration
-        ones=np.ones((8,1))
+        ones=np.ones((nb_ratings,1))
         #print(ones)
         ones[7,0]=0
-        lp=np.reshape(loan_profile,(1,nb_ratings))
-        for g in range(nb_groups):
-            self.amortization_matrices[g]=ones@lp
+        lp=np.reshape(loan_profile,(3,nb_ratings))
+        Transition_rating=np.ones((1,nb_ratings))
+        Transition_rating=(lp[0,:]-lp[2,:])/self.transition_horizon
+        #print(lp[1].reshape(1,nb_ratings))
+        #print(ones)
+        
+        for t in range(1, self.scenarios.horizon):    
+
+            #transition rating
+            if t<=self.transition_horizon:
+                lp[2]+=Transition_rating
+                
+            for g in range(nb_groups):
+                self.amortization_matrices[t,g]=ones@lp[g].reshape(1,nb_ratings)
+            
+        #print(self.amortization_matrices[:])
 
         #initialization of migration matrices
 
@@ -283,7 +296,9 @@ class MatrixAndThresholdGenerator:
 
         #logging of systematic risks
 
-        srisks = np.array([np.array(self.factor_loadings[t])@scenarios.risks_at(t) for t in range(horizon)])
+        srisks = np.array([np.array(self.factor_loadings[t])@(scenarios.risks_at(t)) for t in range(horizon)])
+        
+       
 
         #resizing of systematic risks
 

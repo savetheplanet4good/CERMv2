@@ -111,7 +111,7 @@ def params():
     ## Target Net Zero
     st.sidebar.write('***Target portfolio:***')
     #Green Portfolio
-    green_option = st.sidebar.selectbox('Average Target Rating:',('AAA', 'AA','A','BBB','BB','B+','B','D'),key="7")
+    green_option = st.sidebar.selectbox('Average Target Rating:',('AAA', 'AA','A','BBB','BB','B+','B','D'),index=3,key="7")
 
     micro01 = st.sidebar.slider( 'Average Physical Risk Exposure ', min_value=0.0, step=.01, max_value=4.0, value=0.5, format="%f",key="3")
     st.sidebar.markdown( """
@@ -131,7 +131,7 @@ def params():
     #Portfolio A
     st.sidebar.write('***Initial portfolio:***')
     #Target rating
-    a_option = st.sidebar.selectbox('Average Rating:',('AAA', 'AA','A','BBB','BB','B+','B','D'),key="8")
+    a_option = st.sidebar.selectbox('Average Rating:',('AAA', 'AA','A','BBB','BB','B+','B','D'),index=3,key="8")
     
     micro11 = st.sidebar.slider( 'Average Physical Risk Exposure ', min_value=0.0, step=.01, max_value=4.0, value=1.0, format="%f", key="5")
     micro12 = st.sidebar.slider( 'Average Transition Exposure ', min_value=0.0, step=.01, max_value=4.0, value=2.5, format="%f", key="6")
