@@ -35,8 +35,7 @@ class LargeCERMEngine:
 
         #printing portfolio parameters
 
-        print('Initializing CERM for {} loans in {} groups, {} ratings with horizon {}'
-              .format(len(portfolio.loans()), len(portfolio.groups), len(ratings.list()), scenarios.horizon))
+        #print('Initializing CERM for {} loans in {} groups, {} ratings with horizon {}'.format(len(portfolio.loans()), len(portfolio.groups), len(ratings.list()), scenarios.horizon))
 
         #initialization of timer for generation of migration matrices and thresholds
 
@@ -109,7 +108,9 @@ class LargeCERMEngine:
                 #logging of the EAD array of all exposures at default of the portfolio for every time, group, and initial rating, under given ratings table
 
             EAD = self.portfolio.EAD(horizon,TEST_8_RATINGS)
-
+            
+            #print(EAD[:,10])
+            
             #loss computation
 
             for t in range(horizon):

@@ -40,10 +40,8 @@ logo_path = os.path.join(myCwd, image)
 st.sidebar.image(logo_path,width=130)
 st.sidebar.markdown('**Macro Parameters:**')
 
-
 # App Heading 
 def heading():
-
     st.markdown("""
         <h1 style='text-align: center; margin-bottom: -35px;'>
         CERM
