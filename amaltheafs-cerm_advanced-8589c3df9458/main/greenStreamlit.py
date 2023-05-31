@@ -71,28 +71,28 @@ def params():
                             </p>
                         """, unsafe_allow_html=True
                         )
-    p = st.sidebar.slider( 'Physical Risk Accelaration ', min_value=0, step=1, max_value=30, value=18, format="%d%%")
+    p = st.sidebar.slider( 'Physical Risk Accelaration ', min_value=0, step=1, max_value=30, value=10, format="%d%%")
     st.sidebar.markdown( """ 
-                            <p style= font-size:10px;color:#898A8B;margin-top:-100px;margin-left:160px;'>
-                            economic risk standard deviation
+                            <p style= font-size:9px;color:#898A8B;margin-top:-100px;margin-left:165px;'>
+                            '%' of economic risk standard deviation
                             </p>
                         """, unsafe_allow_html=True
                         )
     stress_test = st.sidebar.slider( 'Physical Drift', min_value=-100, step=1, max_value=0, value=-50, format="%d%%")
     st.sidebar.markdown( """ 
-                            <p style= font-size:11px;color:#898A8B;margin-top:-100px;margin-left:90px;'>
-                            of physical risk standard deviation
+                            <p style= font-size:11px;color:#898A8B;margin-top:-100px;margin-left:95px;'>
+                            '%' of physical risk standard deviation
                             </p>
                         """, unsafe_allow_html=True
                         )
-    Efficiency = st.sidebar.slider( 'Transition Efficiency ', min_value=1, step=1, max_value=20, value=7, format="%d%%")
+    Efficiency = st.sidebar.slider( 'Transition Efficiency ', min_value=1, step=1, max_value=20, value=8, format="%d%%")
     st.sidebar.markdown( """ 
                             <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:130px;'>
                             transition efficiency yield
                             </p>
                         """, unsafe_allow_html=True
                         )
-    Reactivity = st.sidebar.slider( 'Transition Reactivity ', min_value=.001, step=.001, max_value=2.000, value=0.5, format="%f")
+    Reactivity = st.sidebar.slider( 'Transition Reactivity ', min_value=.001, step=.001, max_value=2.000, value=0.25, format="%f")
     st.sidebar.markdown( """ 
                             <p style= font-size:11px;color:#898A8B;margin-top:-100px;margin-left:130px;'>
                              transition effort reactivity coefficient
@@ -120,7 +120,7 @@ def params():
                                 </p>
                             """, unsafe_allow_html=True
                             )
-    micro02 = st.sidebar.slider( 'Average Transition Risk Exposure ', min_value=0.0, step=.01, max_value=4.0, value=0.0, format="%f",key="4")
+    micro02 = st.sidebar.slider( 'Average Transition Risk Exposure ', min_value=0.0, step=.01, max_value=4.0, value=0.5, format="%f",key="4")
     st.sidebar.markdown( """
                                 <p style= font-size:12px;color:#898A8B;margin-top:-85px;margin-left:65px;'>
                                 
@@ -134,7 +134,7 @@ def params():
     a_option = st.sidebar.selectbox('Average Rating:',('AAA', 'AA','A','BBB','BB','B+','B','D'),key="8")
     
     micro11 = st.sidebar.slider( 'Average Physical Risk Exposure ', min_value=0.0, step=.01, max_value=4.0, value=1.0, format="%f", key="5")
-    micro12 = st.sidebar.slider( 'Average Transition Exposure ', min_value=0.0, step=.01, max_value=4.0, value=2.0, format="%f", key="6")
+    micro12 = st.sidebar.slider( 'Average Transition Exposure ', min_value=0.0, step=.01, max_value=4.0, value=2.5, format="%f", key="6")
 
     # number of iterations for Monte-Carlo simulation
     st.sidebar.markdown("***")
