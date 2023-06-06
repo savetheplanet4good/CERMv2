@@ -40,6 +40,47 @@ logo_path = os.path.join(myCwd, image)
 st.sidebar.image(logo_path,width=130)
 st.sidebar.markdown('**Macro Parameters:**')
 
+# Generate info button
+def generate_info_icon_class(top, left, iconLeft):
+    return f"""
+        <style>
+        .info-icon{top}-{left}-{iconLeft} {{
+            position: relative;
+            display: inline-block;
+            font-size: 1rem;
+        }}
+
+        .info-icon{top}-{left}-{iconLeft}::before {{
+            content: "i";
+            position: absolute;
+            top: {top}px;
+            left: {left}px;
+            width: 13px;
+            height: 13px;
+            background-color: #aaa;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 14px;
+        }}
+
+        .info-icon{top}-{left}-{iconLeft}:hover::after {{
+            content: attr(data-info);
+            position: absolute;
+            top: {top + 20}px;
+            left: {iconLeft}px;
+            width: 290px;
+            padding: 5px;
+            background-color: #555;
+            color: #fff;
+            border-radius: 6px;
+            text-align: center;
+            opacity: 0.9;
+            z-index: 1;
+        }}
+        </style>
+    """
+
 # App Heading 
 def heading():
     st.markdown("""
@@ -63,69 +104,94 @@ heading()
 
 def params():
     horizon = st.sidebar.number_input( 'Horizon', 1, 50, value=50)
-    st.sidebar.markdown( """ 
-                            <p style= font-size:12px;color:#898A8B;margin-top:-85px;margin-left:65px;'>
-                             time horizon of the study
-                            </p>
-                        """, unsafe_allow_html=True
-                        )
+    
+    st.markdown(generate_info_icon_class(-90, 160,-10), unsafe_allow_html=True)
     p = st.sidebar.slider( 'Physical Risk Accelaration ', min_value=0, step=1, max_value=30, value=10, format="%d%%")
-    st.sidebar.markdown( """ 
-                            <p style= font-size:11px;color:#898A8B;margin-top:-100px;margin-left:165px;'>
-                            % of economic risk standard deviation
-                            </p>
-                        """, unsafe_allow_html=True
-                        )
+    st.sidebar.markdown(f"""
+        <p style="font-size:11px; color:#898A8B; margin-top:-20px;">
+            <span class="info-icon-90-160--10" data-info="Stochastic increase of physical risk expressed as a percentage of the standard deviation of economic risk ,i.e., A value of 10% means, each year, the annual rise of costs due to climate change randomly speeds up or slows down by an amount equivalent to 10% of a typical economic crisis."></span>
+        </p>
+    """, unsafe_allow_html=True)
+
+    st.markdown(generate_info_icon_class(20, 120,-10), unsafe_allow_html=True)
     stress_test = st.sidebar.slider( 'Physical Risk Drift', min_value=-100, step=1, max_value=0, value=-50, format="%d%%")
     st.sidebar.markdown( """ 
-                            <p style= font-size:11px;color:#898A8B;margin-top:-100px;margin-left:110px;'>
-                            % of physical risk standard deviation
-                            </p>
-                        """, unsafe_allow_html=True
-                        )
+                                <p style= font-size:11px;color:#898A8B;margin-top:-130px;'>
+                                <span class="info-icon20-120--10" data-info="An optional parameter that adjusts the probability of default associated with credit ratings by a percentage of the standard deviation of climate risks, i.e., A value of -50% assumes the cost of climate change increases faster than expected by 50% of the climate change uncertainty. "></span>
+
+                                </p>
+                            """, unsafe_allow_html=True
+                            )
+    st.markdown(generate_info_icon_class(-10, 65,-75), unsafe_allow_html=True)
     Efficiency = st.sidebar.slider( 'Transition Efficiency ', min_value=1, step=1, max_value=20, value=8, format="%d%%")
     st.sidebar.markdown( """ 
-                            <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:130px;'>
-                            transition efficiency yield
-                            </p>
-                        """, unsafe_allow_html=True
-                        )
+                                <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:65px;'>
+                                <span class="info-icon-10-65--75" data-info="The global mitigation of physical costs increase related to climate change achieved annually through global spending on net-zero transition,i.e., A value of 8% implies that €1 invested in transition efforts mitigate the annual rise of cost due to climate change by €0.08 per year: assuming, with the current technology, we need to allocate 6.25% of the global GDP (approximately $7 trillion) towards the transition to a net-zero economy in order to mitigate the adverse effects of excessive carbon emissions, which cost annually 0.5% of GDP (8% being 0.5% divided by 6.25%). "></span>
+
+                                </p>
+                            """, unsafe_allow_html=True
+                            )
+    st.markdown(generate_info_icon_class(-10, 65,-75), unsafe_allow_html=True)
     Reactivity = st.sidebar.slider( 'Transition Reactivity ', min_value=.001, step=.001, max_value=2.000, value=0.25, format="%f")
     st.sidebar.markdown( """ 
-                            <p style= font-size:11px;color:#898A8B;margin-top:-100px;margin-left:130px;'>
-                             transition effort reactivity coefficient
+                            <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:65px;'>
+                            <span  class="info-icon-10-65--75" data-info="The global level of transition spending consented in response to the global increase of physical costs related to climate change,i.e., How fast the economy (potentially under policy and incentives) is evolving to mitigate climate change. A value of 0.5 indicates that we are globally prepared to spend an extra \u20AC0.5 on net-zero transition for every \u20AC1 increase in climate change costs."></span>
+
                             </p>
                         """, unsafe_allow_html=True
                         )
     st.sidebar.markdown("***")
     st.sidebar.markdown('**Parametric Portfolio:**')
+
+    st.markdown(generate_info_icon_class(-12, 1,-75), unsafe_allow_html=True)
     duration = st.sidebar.number_input( 'Duration ', min_value=1, step=1, value=10)
     st.sidebar.markdown( """
-                            <p style= font-size:12px;color:#898A8B;margin-top:-85px;margin-left:65px;'>
-                            average duration in years
-                            </p>
-                        """, unsafe_allow_html=True
-                        )
+                        <p style= font-size:12px;color:#898A8B;margin-top:-85px;margin-left:65px;'>
+                        <span class="info-icon-12-1--75" data-info="The average renewal period the lending book."></span>
+
+                        </p>
+                    """, unsafe_allow_html=True
+                    )
     ## Target Net Zero
     st.sidebar.write('***Target portfolio:***')
     #Green Portfolio
-    green_option = st.sidebar.selectbox('Average Target Rating:',('AAA', 'AA','A','BBB','BB','B+','B','D'),index=3,key="7")
 
-    micro01 = st.sidebar.slider( 'Average Physical Risk Exposure ', min_value=0.0, step=.01, max_value=4.0, value=0.5, format="%f",key="3")
+    st.markdown(generate_info_icon_class(-12, 40,-75), unsafe_allow_html=True)
+    green_option = st.sidebar.selectbox('Average Target Rating:',('AAA', 'AA','A','BBB','BB','B+','B','D'),index=3,key="7")
     st.sidebar.markdown( """
                                 <p style= font-size:12px;color:#898A8B;margin-top:-85px;margin-left:65px;'>
-                                
+                                <span class="info-icon-12-40--75" data-info="The average credit rating of the lending portfolio driving the expected probability of the default of borrowers."></span>
+
                                 </p>
                             """, unsafe_allow_html=True
                             )
+
+    st.markdown(generate_info_icon_class(-25, 130,-75), unsafe_allow_html=True)
+    micro01 = st.sidebar.slider( 'Average Physical Risk Exposure ', min_value=0.0, step=.01, max_value=4.0, value=0.5, format="%f",key="3")
+    st.sidebar.markdown( """
+                            <p style= font-size:12px;color:#898A8B;margin-top:-85px;margin-left:65px;'>
+                            <span class="info-icon-25-130--75" data-info="The average sensitivity of the borrower's assets to physical risks in comparison to the global economy,i.e., A value of 1 indicates that the exposure of the lending portfolio is comparable to that of the global economy. A value of 2 suggests that the portfolio is twice as exposed as the global economy. A value of 0.5 implies that the portfolio is half as exposed as the global economy."></span>
+
+                            </p>
+                        """, unsafe_allow_html=True
+                        )
+    
+    st.markdown(generate_info_icon_class(-25, 140,-75), unsafe_allow_html=True)
     micro02 = st.sidebar.slider( 'Average Transition Risk Exposure ', min_value=0.0, step=.01, max_value=4.0, value=0.5, format="%f",key="4")
     st.sidebar.markdown( """
                                 <p style= font-size:12px;color:#898A8B;margin-top:-85px;margin-left:65px;'>
-                                
+                                <span class="info-icon-25-140--75" data-info="The average sensitivity of the borrower's assets to transition risks in comparison to the global economy,i.e., A value of 1 indicates that the exposure of the lending portfolio is comparable to that of the global economy. A value of 2 suggests that the portfolio is twice as exposed as the global economy. A value of 0.5 implies that the portfolio is half as exposed as the global economy."></span>
                                 </p>
                             """, unsafe_allow_html=True
                             )
+    st.markdown(generate_info_icon_class(-14, 80,-75), unsafe_allow_html=True)
     transition_target_date = st.sidebar.number_input( 'Transition Target Date ', min_value=2023, step=1, value=2050)
+    st.sidebar.markdown( """
+                                    <p style= font-size:12px;color:#898A8B;margin-top:-85px;margin-left:65px;'>
+                                    <span class="info-icon-14-80--75" data-info="The time horizon of the bank for achieving a straight-line transition from the initial portfolio to the target portfolio through portfolio rebalancing and borrowers' transition investment. "></span>
+                                    </p>
+                                """, unsafe_allow_html=True
+                                )
     #Portfolio A
     st.sidebar.write('***Initial portfolio:***')
     #Target rating
