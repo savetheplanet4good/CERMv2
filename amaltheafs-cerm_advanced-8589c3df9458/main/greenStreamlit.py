@@ -105,11 +105,11 @@ heading()
 def params():
     horizon = st.sidebar.number_input( 'Horizon', 1, 50, value=50)
     
-    st.markdown(generate_info_icon_class(-90, 160,-30), unsafe_allow_html=True)
+    st.markdown(generate_info_icon_class(-90, 160,0), unsafe_allow_html=True)
     p = st.sidebar.slider( 'Physical Risk Accelaration ', min_value=0, step=1, max_value=30, value=10, format="%d%%")
     st.sidebar.markdown(f"""
         <p style="font-size:11px; color:#898A8B; margin-top:-20px;">
-            <span class="info-icon-90-160--30" data-info="Stochastic increase of physical risk expressed as a percentage of the standard deviation of economic risk ,i.e., A value of 10% means, each year, the annual rise of costs due to climate change randomly speeds up or slows down by an amount equivalent to 10% of a typical economic crisis."></span>
+            <span class="info-icon-90-160-0" data-info="Stochastic increase of physical risk expressed as a percentage of the standard deviation of economic risk ,i.e., A value of 10% means, each year, the annual rise of costs due to climate change randomly speeds up or slows down by an amount equivalent to 10% of a typical economic crisis."></span>
         </p>
     """, unsafe_allow_html=True)
 
