@@ -117,7 +117,7 @@ def params():
     stress_test = st.sidebar.slider( 'Physical Risk Drift', min_value=-100, step=1, max_value=0, value=-50, format="%d%%")
     st.sidebar.markdown( """ 
                                 <p style= font-size:11px;color:#898A8B;margin-top:-130px;'>
-                                <span class="info-icon-10-120-0" data-info="An optional parameter that adjusts the probability of default associated with credit ratings by a percentage of the standard deviation of climate risks, i.e., A value of -50% assumes the cost of climate change increases faster than expected by 50% of the climate change uncertainty. "></span>
+                                <span class="info-icon10-120-0" data-info="An optional parameter that adjusts the probability of default associated with credit ratings by a percentage of the standard deviation of climate risks, i.e., A value of -50% assumes the cost of climate change increases faster than expected by 50% of the climate change uncertainty. "></span>
 
                                 </p>
                             """, unsafe_allow_html=True
