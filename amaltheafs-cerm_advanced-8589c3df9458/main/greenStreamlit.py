@@ -122,11 +122,11 @@ def params():
                                 </p>
                             """, unsafe_allow_html=True
                             )
-    st.markdown(generate_info_icon_class(-10, 65,-85), unsafe_allow_html=True)
+    st.markdown(generate_info_icon_class(-10, 65,-65), unsafe_allow_html=True)
     Efficiency = st.sidebar.slider( 'Transition Efficiency ', min_value=1, step=1, max_value=20, value=8, format="%d%%")
     st.sidebar.markdown( """ 
                                 <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:65px;'>
-                                <span class="info-icon-10-65--85" data-info="The global mitigation of physical costs increase related to climate change achieved annually through global spending on net-zero transition,i.e., A value of 8% implies that €1 invested in transition efforts mitigate the annual rise of cost due to climate change by €0.08 per year: assuming, with the current technology, we need to allocate 6.25% of the global GDP (approximately $7 trillion) towards the transition to a net-zero economy in order to mitigate the adverse effects of excessive carbon emissions, which cost annually 0.5% of GDP (8% being 0.5% divided by 6.25%). "></span>
+                                <span class="info-icon-10-65--65" data-info="The global mitigation of physical costs increase related to climate change achieved annually through global spending on net-zero transition,i.e., A value of 8% implies that €1 invested in transition efforts mitigate the annual rise of cost due to climate change by €0.08 per year: assuming, with the current technology, we need to allocate 6.25% of the global GDP (approximately $7 trillion) towards the transition to a net-zero economy in order to mitigate the adverse effects of excessive carbon emissions, which cost annually 0.5% of GDP (8% being 0.5% divided by 6.25%). "></span>
 
                                 </p>
                             """, unsafe_allow_html=True
