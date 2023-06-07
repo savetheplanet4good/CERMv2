@@ -131,11 +131,11 @@ def params():
                                 </p>
                             """, unsafe_allow_html=True
                             )
-    st.markdown(generate_info_icon_class(-10, 65,-75), unsafe_allow_html=True)
+    st.markdown(generate_info_icon_class(-10, 65,-85), unsafe_allow_html=True)
     Reactivity = st.sidebar.slider( 'Transition Reactivity ', min_value=.001, step=.001, max_value=2.000, value=0.25, format="%f")
     st.sidebar.markdown( """ 
                             <p style= font-size:12px;color:#898A8B;margin-top:-100px;margin-left:65px;'>
-                            <span  class="info-icon-10-65--75" data-info="The global level of transition spending consented in response to the global increase of physical costs related to climate change,i.e., How fast the economy (potentially under policy and incentives) is evolving to mitigate climate change. A value of 0.5 indicates that we are globally prepared to spend an extra \u20AC0.5 on net-zero transition for every \u20AC1 increase in climate change costs."></span>
+                            <span  class="info-icon-10-65--85" data-info="The global level of transition spending consented in response to the global increase of physical costs related to climate change,i.e., How fast the economy (potentially under policy and incentives) is evolving to mitigate climate change. A value of 0.5 indicates that we are globally prepared to spend an extra \u20AC0.5 on net-zero transition for every \u20AC1 increase in climate change costs."></span>
 
                             </p>
                         """, unsafe_allow_html=True
