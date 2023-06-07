@@ -184,11 +184,11 @@ def params():
                                 </p>
                             """, unsafe_allow_html=True
                             )
-    st.markdown(generate_info_icon_class(-15, 80,-65), unsafe_allow_html=True)
+    st.markdown(generate_info_icon_class(-13, 80,-65), unsafe_allow_html=True)
     transition_target_date = st.sidebar.number_input( 'Transition Target Date ', min_value=2023, step=1, value=2050)
     st.sidebar.markdown( """
                                     <p style= font-size:12px;color:#898A8B;margin-top:-85px;margin-left:65px;'>
-                                    <span class="info-icon-15-80--65" data-info="The time horizon of the bank for achieving a straight-line transition from the initial portfolio to the target portfolio through portfolio rebalancing and borrowers' transition investment. "></span>
+                                    <span class="info-icon-13-80--65" data-info="The time horizon of the bank for achieving a straight-line transition from the initial portfolio to the target portfolio through portfolio rebalancing and borrowers' transition investment. "></span>
                                     </p>
                                 """, unsafe_allow_html=True
                                 )
