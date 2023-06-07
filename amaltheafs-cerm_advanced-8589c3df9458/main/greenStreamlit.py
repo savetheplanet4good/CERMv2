@@ -156,21 +156,21 @@ def params():
     st.sidebar.write('***Target portfolio:***')
     #Green Portfolio
 
-    st.markdown(generate_info_icon_class(-12, 70,-65), unsafe_allow_html=True)
+    st.markdown(generate_info_icon_class(-12, 75,-65), unsafe_allow_html=True)
     green_option = st.sidebar.selectbox('Average Target Rating:',('AAA', 'AA','A','BBB','BB','B+','B','D'),index=3,key="7")
     st.sidebar.markdown( """
                                 <p style= font-size:12px;color:#898A8B;margin-top:-85px;margin-left:65px;'>
-                                <span class="info-icon-12-70--65" data-info="The average credit rating of the lending portfolio driving the expected probability of the default of borrowers."></span>
+                                <span class="info-icon-12-75--65" data-info="The average credit rating of the lending portfolio driving the expected probability of the default of borrowers."></span>
 
                                 </p>
                             """, unsafe_allow_html=True
                             )
 
-    st.markdown(generate_info_icon_class(-25, 130,-75), unsafe_allow_html=True)
+    st.markdown(generate_info_icon_class(-25, 130,-65), unsafe_allow_html=True)
     micro01 = st.sidebar.slider( 'Average Physical Risk Exposure ', min_value=0.0, step=.01, max_value=4.0, value=0.5, format="%f",key="3")
     st.sidebar.markdown( """
                             <p style= font-size:12px;color:#898A8B;margin-top:-85px;margin-left:65px;'>
-                            <span class="info-icon-25-130--75" data-info="The average sensitivity of the borrower's assets to physical risks in comparison to the global economy,i.e., A value of 1 indicates that the exposure of the lending portfolio is comparable to that of the global economy. A value of 2 suggests that the portfolio is twice as exposed as the global economy. A value of 0.5 implies that the portfolio is half as exposed as the global economy."></span>
+                            <span class="info-icon-25-130--65" data-info="The average sensitivity of the borrower's assets to physical risks in comparison to the global economy,i.e., A value of 1 indicates that the exposure of the lending portfolio is comparable to that of the global economy. A value of 2 suggests that the portfolio is twice as exposed as the global economy. A value of 0.5 implies that the portfolio is half as exposed as the global economy."></span>
 
                             </p>
                         """, unsafe_allow_html=True
@@ -184,11 +184,11 @@ def params():
                                 </p>
                             """, unsafe_allow_html=True
                             )
-    st.markdown(generate_info_icon_class(-14, 80,-65), unsafe_allow_html=True)
+    st.markdown(generate_info_icon_class(-15, 80,-65), unsafe_allow_html=True)
     transition_target_date = st.sidebar.number_input( 'Transition Target Date ', min_value=2023, step=1, value=2050)
     st.sidebar.markdown( """
                                     <p style= font-size:12px;color:#898A8B;margin-top:-85px;margin-left:65px;'>
-                                    <span class="info-icon-14-80--65" data-info="The time horizon of the bank for achieving a straight-line transition from the initial portfolio to the target portfolio through portfolio rebalancing and borrowers' transition investment. "></span>
+                                    <span class="info-icon-15-80--65" data-info="The time horizon of the bank for achieving a straight-line transition from the initial portfolio to the target portfolio through portfolio rebalancing and borrowers' transition investment. "></span>
                                     </p>
                                 """, unsafe_allow_html=True
                                 )
