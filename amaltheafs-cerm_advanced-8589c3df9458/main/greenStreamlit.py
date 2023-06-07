@@ -143,11 +143,11 @@ def params():
     st.sidebar.markdown("***")
     st.sidebar.markdown('**Parametric Portfolio:**')
 
-    st.markdown(generate_info_icon_class(-12, 1,-75), unsafe_allow_html=True)
+    st.markdown(generate_info_icon_class(-12, 5,-65), unsafe_allow_html=True)
     duration = st.sidebar.number_input( 'Duration ', min_value=1, step=1, value=10)
     st.sidebar.markdown( """
                         <p style= font-size:12px;color:#898A8B;margin-top:-85px;margin-left:65px;'>
-                        <span class="info-icon-12-1--75" data-info="The average renewal period the lending book."></span>
+                        <span class="info-icon-12-5--65" data-info="The average renewal period the lending book."></span>
 
                         </p>
                     """, unsafe_allow_html=True
