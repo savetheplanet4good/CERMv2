@@ -235,7 +235,8 @@ def sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option
     beta = 0.001
 
     #climate change intensity of the economic activity (idiosyncratic)
-    gamma = 0.02
+    gamma = 0
+    #gamma = 0.02
 
     #hypothetical climate-free average growth rate of log GDP
     R = 2
@@ -772,8 +773,8 @@ def sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option
     ax1.plot(el_g[0], label="expected loss")
     #ax1.plot(ul1_g[0], label="unexpected loss at risk "+str(int(100*risk1))+"%")
     #ax1.plot(ul2_g[0], label="unexpected loss at risk "+str(int(100*risk2))+"%")
-    ax1.plot(ul1_g[0], label="unexpected loss at "+str(100-int(100*risk1))+"%")
-    ax1.plot(ul2_g[0], label="unexpected loss at "+str(100-int(100*risk2))+"%")
+    ax1.plot(ul1_g[0], label="value at risk "+str(100-int(100*risk1))+"%")
+    ax1.plot(ul2_g[0], label="value at risk "+str(100-int(100*risk2))+"%")
     
     # Remove the existing y-axis on the left side
     ax1.spines['left'].set_color('none')
@@ -846,8 +847,8 @@ def sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option
 
     fig, ax1 = plt.subplots(figsize=(8, 6))
     ax1.plot(el_g[1], label="expected loss")
-    ax1.plot(ul1_g[1], label="unexpected loss at risk "+str(100-int(100*risk1))+"%")
-    ax1.plot(ul2_g[1], label="unexpected loss at risk "+str(100-int(100*risk2))+"%")
+    ax1.plot(ul1_g[1], label="value at risk "+str(100-int(100*risk1))+"%")
+    ax1.plot(ul2_g[1], label="value at risk "+str(100-int(100*risk2))+"%")
 
     # Remove the existing y-axis on the left side
     ax1.spines['left'].set_color('none')
@@ -911,8 +912,8 @@ def sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option
 
     fig, ax1 = plt.subplots(figsize=(8, 6))
     ax1.plot(el_g[2], label="expected loss")
-    ax1.plot(ul1_g[2], label="unexpected loss at risk "+str(100-int(100*risk1))+"%")
-    ax1.plot(ul2_g[2], label="unexpected loss at risk "+str(100-int(100*risk2))+"%")
+    ax1.plot(ul1_g[2], label="value at risk "+str(100-int(100*risk1))+"%")
+    ax1.plot(ul2_g[2], label="value at risk "+str(100-int(100*risk2))+"%")
 
     # Remove the existing y-axis on the left side
     ax1.spines['left'].set_color('none')
