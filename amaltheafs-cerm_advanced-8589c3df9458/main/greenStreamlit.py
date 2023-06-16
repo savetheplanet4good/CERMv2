@@ -94,12 +94,17 @@ def heading():
         Climate-Extended Risk Model 
         </h6>
         <br>
-        <br>
-
     """, unsafe_allow_html=True
     )
-    st.write("")
-    st.write("")
+    st.markdown("""
+            <h6 style='text-align: center; '>
+            
+            The Climate Extended Risk Model (CERM): https://arxiv.org/abs/2103.03275
+            <br>
+            A Stochastic Climate Model -- An approach to calibrate the Climate-Extended Risk Model (CERM): https://arxiv.org/abs/2205.02581
+            </h6>
+        """, unsafe_allow_html=True
+        )
 heading()
 
 def params():
