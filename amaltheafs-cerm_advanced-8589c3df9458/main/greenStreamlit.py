@@ -653,7 +653,7 @@ def sideBar(horizon, p, stress_test, Efficiency,Reactivity,duration,green_option
     loan_profile=world_portfolio.EAD(1,TEST_8_RATINGS)[:]/size
 
     portfolio_dict = show(portfolio)
-    all_loans = np.vstack(portfolio_dict.values())
+    all_loans = np.vstack(list(portfolio_dict.values()))
     all_principals = all_loans[:,0]
     total_principal = sum(np.array(all_principals, dtype=np.int32))
 
